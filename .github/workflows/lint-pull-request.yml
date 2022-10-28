@@ -13,9 +13,7 @@ jobs:
     name: Validate PR title
     runs-on: ubuntu-latest
     steps:
-      - uses: amannn/action-semantic-pull-request@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.LINT_PR_GH_TOKEN }}
+      - uses: amannn/action-semantic-pull-request@v5.0.2
         with:
           # Default: https://github.com/commitizen/conventional-commit-types
           types: |
