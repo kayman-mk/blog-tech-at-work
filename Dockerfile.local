@@ -1,0 +1,14 @@
+FROM ruby:3.1.2-alpine3.16
+
+# install the build essential tools to compile the gems
+RUN apk update && apk add --no-cache build-base
+
+# install Jekyll
+RUN gem install bundler jekyll
+
+WORKDIR /mnt/src
+
+COPY src/Gemfile /
+RUN bundle install
+
+CMD ["bundle", "exec", "jekyll", "serve", "-w", "-l"]
