@@ -3,12 +3,13 @@ FROM ruby:3.1.2-alpine3.16
 # install the build essential tools to compile the gems
 RUN apk update && apk add --no-cache build-base
 
-# install Jekyll
-RUN gem install bundler jekyll
-
+# to be mounted externally
 WORKDIR /mnt/src
 
-COPY src/Gemfile /
+# install the Gems needed by the blog
+COPY src/* /mnt/src/
 RUN bundle install
 
-CMD ["bundle", "exec", "jekyll", "serve", "-w", "-l"]
+# make it available via port 4000
+EXPOSE 4000
+CMD ["bundle", "exec", "jekyll", "serve", "-w", "-l", "-H", "0.0.0.0"]
