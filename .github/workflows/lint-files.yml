@@ -23,12 +23,13 @@ jobs:
 
   lint-workflow:
     runs-on: ubuntu-latest
+    container:
+      image: rhysd/actionlint:1.16.22
+      volumes:
+        - $(pwd):/repo
+      options: --cpus 1
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
-        with:
-          go-version-file: 'go.mod'
-      - name: Validate Github Workflows
+      - name: Check for dockerenv file
         run: |
-          go mod vendor
-          actionlint
+          cd /repo
+          actionlint -color
