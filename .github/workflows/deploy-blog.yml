@@ -23,6 +23,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - name: Build blog
+        run: |
+          bundle config path "$(pwd)/vendor/bundle"
+
+          cd src
+          bundle install
+
+          bundle exec jekyll build
+
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
