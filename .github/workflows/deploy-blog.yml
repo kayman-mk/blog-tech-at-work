@@ -35,7 +35,7 @@ jobs:
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: 46.38.249.61
+          server: hosting11370.af93d.netcup.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
