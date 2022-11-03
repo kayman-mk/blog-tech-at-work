@@ -32,4 +32,5 @@ jobs:
         run: |
           pwd
           ls -la
+          find . -name "*.yml"
           actionlint -color
