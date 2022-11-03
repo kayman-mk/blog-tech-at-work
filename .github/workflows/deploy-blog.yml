@@ -40,5 +40,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           dry-run: true
+          security: strict
           local-dir: target/
           server-dir: blog.matthiaskay.de/
