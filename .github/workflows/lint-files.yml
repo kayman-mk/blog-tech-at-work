@@ -30,4 +30,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Validate Github workflows
         run: |
+          pwd
+          ls -la
           actionlint -color
