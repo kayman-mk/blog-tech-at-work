@@ -25,10 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: rhysd/actionlint:1.6.22
-      volumes:
-        - .:/repo
       options: --cpus 1
     steps:
+      - uses: actions/checkout@v2
       - name: Check for dockerenv file
         run: |
           cd /repo
