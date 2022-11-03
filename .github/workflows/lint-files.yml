@@ -24,7 +24,7 @@ jobs:
   lint-workflow:
     runs-on: ubuntu-latest
     container:
-      image: rhysd/actionlint:1.16.22
+      image: rhysd/actionlint:1.6.22
       volumes:
         - $(pwd):/repo
       options: --cpus 1
