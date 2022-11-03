@@ -10,13 +10,25 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate YAML file
-        run: find . \( -name "*.yml" -o -name "*.yaml" \) | xargs yamllint -c .yamllint.yml --strict
+        run: find . -print0 \( -name "*.yml" -o -name "*.yaml" \) | xargs yamllint -c .yamllint.yml --strict
 
   lint-markdown:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Validate Markdown file
-        run:
-          - npm install -g markdownlint-cli
-          - markdownlint "**/*.md"
+        run: |
+          npm install -g markdownlint-cli
+          markdownlint "**/*.md"
+
+  lint-workflow:
+    runs-on: ubuntu-latest
+    container:
+      image: rhysd/actionlint:1.6.22
+      options: --cpus 1 --user root
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate Github workflows
+        run: |
+          mkdir .git
+          actionlint -color
