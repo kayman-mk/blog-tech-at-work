@@ -30,5 +30,6 @@ jobs:
           go-version-file: 'go.mod'
       - name: Validate Github Workflows
         run: |
+          ls -la
           go install
           actionlint
