@@ -5,32 +5,6 @@ on: # yamllint disable-line rule:truthy
   pull_request:
 
 jobs:
-  build-the-blog:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
-        with:
-          ruby-version: 3.1.2
-
-      - uses: actions/cache@v3
-        with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-
-      - name: Build blog
-        run: |
-          bundle config path "$(pwd)/vendor/bundle"
-
-          cd src
-          bundle install
-
-          bundle exec jekyll build
-
   web-deploy:
     name: Deploy site
     runs-on: ubuntu-latest
@@ -53,8 +27,8 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: 46.38.249.61
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           dry-run: true
           local-dir: target/
