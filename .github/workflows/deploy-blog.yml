@@ -1,0 +1,46 @@
+---
+name: "Deployment"
+
+on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+
+jobs:
+  ftp-deploy:
+    name: Deploy site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Build blog
+        run: |
+          bundle config path "$(pwd)/vendor/bundle"
+
+          cd src
+          bundle install
+
+          bundle exec jekyll build
+
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: af93d.netcup.net
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          security: strict
+          local-dir: target/
+          server-dir: blog.matthiaskay.de/
