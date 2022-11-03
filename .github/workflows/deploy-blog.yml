@@ -1,11 +1,13 @@
 ---
-name: "Build the blog"
+name: "Deployment"
 
 on: # yamllint disable-line rule:truthy
-  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
-  web-deploy:
+  ftp-deploy:
     name: Deploy site
     runs-on: ubuntu-latest
     steps:
