@@ -17,6 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Validate Markdown file
-        run:
-          - npm install -g markdownlint-cli
-          - markdownlint "**/*.md"
+        run: |
+          npm install -g markdownlint-cli
+          markdownlint "**/*.md"
