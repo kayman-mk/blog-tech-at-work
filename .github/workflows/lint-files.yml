@@ -30,6 +30,5 @@ jobs:
           go-version-file: 'go.mod'
       - name: Validate Github Workflows
         run: |
-          ls -la
-          go install
+          go mod vendor
           actionlint
