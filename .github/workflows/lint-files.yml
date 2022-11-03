@@ -28,6 +28,6 @@ jobs:
       options: --cpus 1
     steps:
       - uses: actions/checkout@v2
-      - name: Check for dockerenv file
+      - name: Validate Github workflows
         run: |
           actionlint -color
