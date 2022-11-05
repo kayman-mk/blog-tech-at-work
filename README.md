@@ -2,7 +2,7 @@
 
 This repository contains the content of my blog Tech@Work.
 
-## Workflows
+## WorkflowsWorkflowsWorkflowsWorkflowsWorkflowsWorkflowsWorkflowsWorkflowsWorkflows
 
 - lints all YAML files
 - lints all Markdown files
