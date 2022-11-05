@@ -11,4 +11,6 @@ This repository contains the content of my blog Tech@Work.
 - lints the Github workflow files
 
 ## Jekyll
-If you do not have Jekyll available on your system, execute `docker build -t jekyll -f docker/Dockerfile.jekyll .` to create a Docker image.
+
+If you do not have Jekyll available on your system, execute `docker build -t jekyll -f docker/Dockerfile.jekyll .`
+to create a Docker image.
