@@ -1,0 +1,16 @@
+FROM ruby:3.1.2-alpine3.16
+
+# install the build essential tools to compile the gems
+RUN apk update && apk add --no-cache build-base=0.4-r1
+
+# to be mounted externally
+RUN mkdir -p /opt/jekyll
+WORKDIR /opt/jekyll
+
+# install the Gems needed by the blog
+COPY src/Gemfile .
+RUN bundle install
+
+# make it available via port 4000
+EXPOSE 4000
+CMD ["sh"]
