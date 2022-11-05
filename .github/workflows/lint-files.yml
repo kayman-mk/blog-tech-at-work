@@ -19,7 +19,7 @@ jobs:
       - name: Validate Markdown file
         run: |
           npm install -g markdownlint-cli
-          markdownlint "**/*.md"
+          markdownlint -c .markdownlint.yml "**/*.md"
 
   lint-workflow:
     runs-on: ubuntu-latest
