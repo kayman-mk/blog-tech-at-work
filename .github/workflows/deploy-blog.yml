@@ -25,6 +25,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - name: Install Fontawesome
+        run: |
+          wget --progress=dot:giga https://use.fontawesome.com/releases/v6.2.0/fontawesome-free-6.2.0-web.zip -O fontawesome.zip
+
+          mkdir -p assets/css
+          unzip -j fontawesome.zip fontawesome-free-6.2.0-web/css/all.min.css -d assets/css
+
+          mkdir -p assets/webfonts
+          unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d assets/webfonts
+
       - name: Build blog
         run: |
           bundle config path "$(pwd)/vendor/bundle"
