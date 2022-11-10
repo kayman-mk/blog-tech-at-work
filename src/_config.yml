@@ -46,10 +46,19 @@ social:
 # Build settings
 theme: minimal-mistakes-jekyll
 minimal_mistakes_skin: contrast
-paginate: 5
-timezone: Europe/Berlin
 locale: en
 search: true
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+timezone: Europe/Berlin
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 footer:
   links:
@@ -58,8 +67,12 @@ footer:
       icon: fab fa-fw fa-github
 
 plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
   - jekyll-feed
   - jekyll-data
+  - jekyll-include-cache
 
 destination: ../target
 
@@ -82,6 +95,11 @@ defaults:
 lunr:
   search_within_pages: true
   search_full_content: true
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
 
 # Exclude from processing.
 # The following items will not be processed, by default.
