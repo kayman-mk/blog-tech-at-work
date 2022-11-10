@@ -44,13 +44,4 @@ jobs:
 
           bundle exec jekyll build
 
-      - name: Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: af93d.netcup.net
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          security: strict
-          local-dir: target/
-          server-dir: blog.matthiaskay.de/
+
