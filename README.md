@@ -10,7 +10,7 @@ This repository contains the content of my blog Tech@Work.
 - lints the title of pull requests
 - lints the Github workflow files
 
-## Jekyll
+## Run Jekyll locally
 
-If you do not have Jekyll available on your system, execute `docker build -t jekyll -f docker/Dockerfile.jekyll .`
-to create a Docker image.
+Execute the `start_blog.sh` script. It builds a Docker image with all prerequisites and serves the blog
+on your local machine at `http://localhost:4000/`.

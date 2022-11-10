@@ -3,7 +3,6 @@ FROM ruby:3.1.2-alpine3.16
 # install the build essential tools to compile the gems
 RUN apk update && apk add --no-cache build-base=0.5-r3
 
-# to be mounted externally
 RUN mkdir -p /opt/jekyll
 WORKDIR /opt/jekyll
 
@@ -12,11 +11,11 @@ COPY src/Gemfile .
 RUN bundle install
 
 # install fontawesome
-RUN wget --progress=dot:giga https://use.fontawesome.com/releases/v6.2.0/fontawesome-free-6.2.0-web.zip -O fontawesome.zip && \
+RUN wget -q https://use.fontawesome.com/releases/v6.2.0/fontawesome-free-6.2.0-web.zip -O fontawesome.zip && \
     mkdir -p assets/css && unzip -j fontawesome.zip fontawesome-free-6.2.0-web/css/all.min.css -d assets/css && \
     mkdir -p assets/webfonts && unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d assets/webfonts && \
     rm fontawesome.zip
 
 # make it available via port 4000
 EXPOSE 4000
-CMD ["sh"]
+CMD cp -dpr /mnt/src/* . && jekyll serve -H 0.0.0.0
