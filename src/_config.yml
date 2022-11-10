@@ -1,0 +1,122 @@
+---
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: Tech@Work
+subtitle: Made by people
+name: Matthias Kay
+email: blog@matthiaskay.de
+description: >- # this means to ignore newlines until "baseurl:"
+  All about CI/CD, DevOps and related topics. Mainly for enterprises.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://blog.matthiaskay.de" # the base hostname & protocol for your site, e.g. http://example.com
+github_username: kayman-mk
+repository: kayman-mk/blog-tech-at-work
+
+# Author
+author:
+  name: Matthias Kay
+  avatar: "/assets/profile/avatar.jpg"
+  bio: Software Engineer @HapagLloyd
+  location: Hamburg, Germany
+
+# Social profile
+social:
+  type: person
+  links:
+    - https://github.com/kayman-mk
+
+# Build settings
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: contrast
+locale: en
+search: true
+
+# Outputting
+permalink: /:categories/:title/
+paginate: 5 # amount of posts to show
+paginate_path: /page:num/
+timezone: Europe/Berlin
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed # https://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
+footer:
+  links:
+    - label: GitHub
+      url: https://github.com/kayman-mk
+      icon: fab fa-fw fa-github
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-data
+  - jekyll-include-cache
+
+destination: ../target
+
+# Defaults
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      comments: true
+      share: true
+      related: true
+      show_date: true
+      read_time: true
+
+# Search engine
+lunr:
+  search_within_pages: true
+  search_full_content: true
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

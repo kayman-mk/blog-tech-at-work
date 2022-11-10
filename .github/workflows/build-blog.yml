@@ -1,0 +1,57 @@
+---
+name: "Build the blog"
+
+on: # yamllint disable-line rule:truthy
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-the-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+
+      - uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Build blog
+        run: |
+          bundle config path "$(pwd)/vendor/bundle"
+
+          cd src
+          bundle install
+
+          bundle exec jekyll build
+
+      - name: Install Fontawesome
+        run: |
+          wget https://use.fontawesome.com/releases/v6.2.0/fontawesome-free-6.2.0-web.zip -O fontawesome.zip
+
+          mkdir -p target/assets/css
+          unzip -j fontawesome.zip fontawesome-free-6.2.0-web/css/all.min.css -d target/assets/css
+
+          mkdir -p target/assets/webfonts
+          unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d target/assets/webfonts
+
+      - name: Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        if: github.ref == 'refs/heads/main'
+        with:
+          server: af93d.netcup.net
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          security: strict
+          local-dir: target/
+          server-dir: blog.matthiaskay.de/
