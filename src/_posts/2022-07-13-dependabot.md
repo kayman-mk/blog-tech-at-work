@@ -1,7 +1,7 @@
 ---
 date: 2022-07-13
 ---
-# Dependabot
+# Update your software dependencies on a regular interval
 
 ## What is it good for?
 
