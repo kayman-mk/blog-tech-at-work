@@ -1,7 +1,9 @@
 ---
 date: 2022-07-01
 ---
-# What is Dependabot good for?
+# Dependabot
+
+# What is it good for?
 
 Dependabot is a tool which updates all your dependencies in a repository on a regular basis. It is doing so by creating pull requests, so
 it follows your defined release process. It behaves like a developer who does the boring work for your team. Great!
@@ -18,6 +20,7 @@ You can run the tool for free so just give it a try!
 # Why updating dependencies?
 
 I will not repeat all the pros and cons (are there any?) here. Instead, use the following articles for a good overview:
+
 - [Why and How You Should Automate Dependency Updates](https://www.mend.io/free-developer-tools/blog/why-and-how-you-should-automate-dependency-updates/)
 - [Continuous dependency updates: Improving processes by front-loading pain](https://snyk.io/blog/continuous-dependency-updates-improving-processes-front-loading-pain/)
 - [Automatic dependencies updates for frontend services](https://medium.com/azimolabs/automatic-dependencies-updates-for-frontend-services-3af5873d5592)
@@ -31,6 +34,7 @@ I am using this tool for a couple of years now to keep the dependencies of ~100 
 I don't see any major difference.
 
 # Sample Configuration
+
 ```yaml
 ---
 version: 2
