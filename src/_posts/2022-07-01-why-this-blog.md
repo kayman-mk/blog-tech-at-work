@@ -1,5 +1,6 @@
 ---
 date: 2022-07-01
+title: Why this blog?
 ---
 # Why this blog?
 

@@ -1,5 +1,6 @@
 ---
 date: 2022-08-12
+title: Be faster on the command line with GLab CLI
 ---
 # Be faster on the command line: GitLab
 

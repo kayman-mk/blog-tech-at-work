@@ -1,5 +1,6 @@
 ---
 date: 2022-07-13
+title: Updating dependencies with Dependabot
 ---
 # Update your software dependencies on a regular interval
 

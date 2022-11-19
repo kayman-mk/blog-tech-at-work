@@ -1,5 +1,6 @@
 ---
 date: 2022-07-25
+title: Be faster on the command line with Git
 ---
 # Be faster on the command line: Git
 
