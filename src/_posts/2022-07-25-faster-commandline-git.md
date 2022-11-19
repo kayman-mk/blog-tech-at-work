@@ -2,10 +2,6 @@
 date: 2022-07-25
 title: Be faster on the command line with Git
 ---
-# Be faster on the command line: Git
-
-## Motivation
-
 I am using the command line day by day for my Git tasks: cloning repositories, creating new branches, committing changes.
 One paint point always was the time it took me to type in the commands, especially for Git. So I sat down and thought
 about some useful aliases which could make my life easier.

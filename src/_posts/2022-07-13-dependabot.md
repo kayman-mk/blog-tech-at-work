@@ -1,11 +1,7 @@
 ---
 date: 2022-07-13
-title: Updating dependencies with Dependabot
+title: Updating dependencies with Dependabot on a regular interval
 ---
-# Update your software dependencies on a regular interval
-
-## What is it good for?
-
 Dependabot is a tool which updates all your dependencies in a repository on a regular basis. It is doing so by creating pull
 requests, so it follows your defined release process. It behaves like a developer who does the boring work for your team. Great!
 
