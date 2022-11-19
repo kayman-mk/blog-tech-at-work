@@ -1,10 +1,7 @@
 ---
 date: 2022-08-12
+title: Be faster on the command line with GLab CLI
 ---
-# Be faster on the command line: GitLab
-
-## Motivation
-
 We are using a self hosted GitLab solution to host all our repositories. For me it was always a pain to create merge
 requests and push changes to the remote repository (already tackled in [my previous post](/2022/07/25/faster-commandline-git.html)).
 
