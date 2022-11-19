@@ -25,10 +25,13 @@ to execute the virgin `glab` command, do it this way: `\glab`. This skips your a
 
 ### Create a merge request
 
+<!-- command shall be displayed as one line -->
+<!-- markdownlint-disable-next-line MD013 -->
 `alias cmr='create_mr(){ glab mr create --draft --fill --fill-commit-body -y --remove-source-branch -a $GITLAB_USERNAME -l "$1" -t "$2"; unset -f create_mr; }; create_mr'`
 
-This alias creates a new draft merge request for the current branch, assigns it to your user (don't forget to set the `GITLAB_USERNAME` variable),
-adds a specific title and fills the description with all commit messages of the current branch. Labels can be added as well.
+This alias creates a new draft merge request for the current branch, assigns it to your user (don't forget to set the
+`GITLAB_USERNAME` variable), adds a specific title and fills the description with all commit messages of the current branch.
+Labels can be added as well.
 
 Usage: `cmr label1,label2' 'chore: my specific title here'`
 
@@ -40,6 +43,8 @@ A low brainer. Opens the current merge request in your browser.
 
 ### Show all merge requests I have to review
 
+<!-- command shall be displayed as one line -->
+<!-- markdownlint-disable-next-line MD013 -->
 `alias lrev='\glab api "groups/$GITLAB_ROOT_GROUP/merge_requests?state=opened&reviewer_username=$GITLAB_USERNAME&order_by=created_at&sort=desc" | jq -r "(.[] | [(.author.name | \" \"* (26-length) + .), .title]) | @tsv"'`
 
 My favorite one. Lists all merge requests I have to review. Needs the `GITLAB_USERNAME` variable to be set and the `GITLAB_ROOT_GROUP`
@@ -53,6 +58,8 @@ Technischer User      chore(deps): update puppeteer packages to v19 (major)
 
 ### Show a merge request to review
 
+<!-- command shall be displayed as one line -->
+<!-- markdownlint-disable-next-line MD013 -->
 `alias srev='show_mr(){ chrome $(\glab api "groups/$GITLAB_ROOT_GROUP/merge_requests?state=opened&reviewer_username=$GITLAB_USERNAME&order_by=created_at&sort=desc" | jq -r ".[$1-1].web_url"); unset -f show_mr; }; show_mr'`
 
 Use the `lrev` command from above and then execute a `srev 1` to open the first merge request in your browser. The alias opens the
