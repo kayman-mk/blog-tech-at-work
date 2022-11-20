@@ -1,0 +1,35 @@
+{
+  "name": "Release for Sync Click-TT Calendar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "../examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kayman-mk/Sync-Click-TT-Calendar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kayman-mk/Sync-Click-TT-Calendar/issues"
+  },
+  "homepage": "https://github.com/kayman-mk/Sync-Click-TT-Calendar#readme",
+  "dependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.6",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "semantic-release": "^19.0.5"
+  },
+  "devDependencies": {
+    "semantic-release-maven": "^1.1.6"
+  }
+}
