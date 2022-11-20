@@ -3,7 +3,7 @@ date: 2022-08-12
 title: Be faster on the command line with GLab CLI
 ---
 We are using a self hosted GitLab solution to host all our repositories. For me it was always a pain to create merge
-requests and push changes to the remote repository (already tackled in [my previous post](/2022/07/25/faster-commandline-git.html)).
+requests and push changes to the remote repository (already tackled in [Be faster on the command line with Git](faster-commandline-git.html)).
 
 This time I found the [GLab tool on GitHub](https://github.com/profclems/glab/) which is the remote control for GitLab. In the
 meantime GitLab integrated it and offers it as the official [GitLab CLI tool](https://gitlab.com/gitlab-org/cli/). GitHub
