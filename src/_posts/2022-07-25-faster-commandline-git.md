@@ -52,6 +52,12 @@ Consider to set the `core.editor` setting to use a different editor.
 Same as before but now your branch is pushed to the remote repository. `origin` has to point to a repository which is
 writable for you. In case no upstream is set, the alias does it.
 
+### Checkout a branch
+
+`$ alias gco='function _gco() { if [ -z "$1" ]; then git checkout $(gdb); else git checkout "$1"; fi; unset -f _gco; }; _gco "$1"'`
+
+Either does a checkout of the default branch (if no parameters given) or checkouts the mentioned branch, e.g. `gco my/test/branch`.
+
 ### Get the default branch
 
 `alias gdb="git remote show origin | sed -n '/HEAD branch/s/.*: //p'"`
