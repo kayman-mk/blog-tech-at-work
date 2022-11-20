@@ -4,11 +4,13 @@ This repository contains the content of my blog Tech@Work.
 
 ## Workflows
 
-- lints all YAML files
-- lints all Markdown files
-- lints all Dockerfiles
-- lints the title of pull requests
-- lints the Github workflow files
+- Linting:
+  - YAML
+  - Markdown files
+  - Dockerfiles
+  - the title of pull requests
+  - Github workflow files
+- Semantic release
 
 ## Run Jekyll locally
 
