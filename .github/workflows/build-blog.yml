@@ -47,12 +47,12 @@ jobs:
       - id: get-changed-files
         uses: jitterbit/get-changed-files@v1
         with:
-          format: space-delimited
+          format: json
 
       - name: Create Github issue for new posts
         run: |
-          echo "Changed files: ${{ steps.get-changed-files.outputs.all }}"
-          new_post=$(git diff --name-status HEAD remotes/origin/main | grep ^A | cut -f 2 | grep src/_posts)
+          echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
+          new_post=$(echo "${{ steps.get-changed-files.outputs.added }}" | jq -r .[] | grep src/_posts)
           
           if [ -n "$new_post" ]; then
             echo "New post found: $new_post"
