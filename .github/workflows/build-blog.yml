@@ -68,7 +68,7 @@ jobs:
                   -d "{
                   \"title\": \"$title\",
                   \"body\": \"\",
-                  \"labels": [
+                  \"labels\": [
                     \"blog-comment\",
                     \"not-released\"
                   ]
