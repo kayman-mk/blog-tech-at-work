@@ -70,7 +70,7 @@ jobs:
                   \"body\": \"\",
                   \"labels\": [
                     \"blog-comment\",
-                    \"not-released\"
+                    \"not-published\"
                   ]
                 }")
             
