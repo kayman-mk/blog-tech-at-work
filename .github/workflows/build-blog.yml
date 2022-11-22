@@ -58,21 +58,24 @@ jobs:
             echo "New post found: $new_post"
           
             title=$(cat "$new_post" | sed -n -e 's/^.*title: //p')
+            issue_id=$(cat "$new_post" | sed -n -e 's/^.*comment_id: //p')
           
-            issue_no=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
-              -H "Accept: application/vnd.github+json" \
-              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Content-Type: text/plain; charset=utf-8" \
-                -d '{
-                "title": "$title",
-                "body": "",
-                "labels": [
-                  "blog-comment",
-                  "not-released"
-                ]
-              }' | jq -r '.number')
-          
-            echo "Created GitHub issue: $issue_no"
+            if [ ! -n "$issue_id" ]; then
+              issue_no=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
+                -H "Accept: application/vnd.github+json" \
+                -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                -H "Content-Type: text/plain; charset=utf-8" \
+                  -d "{
+                  \"title\": \"$title\",
+                  \"body\": \"\",
+                  \"labels": [
+                    \"blog-comment\",
+                    \"not-released\"
+                  ]
+                }" | jq -r '.number')
+            
+              echo "Created GitHub issue: $issue_no"
+            fi
           fi
 
       - name: Deploy
