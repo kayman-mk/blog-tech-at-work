@@ -83,6 +83,9 @@ jobs:
 
       - id: commit-changes
         uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Add comment_id to new posts"
+          file_pattern: src/_posts
 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
