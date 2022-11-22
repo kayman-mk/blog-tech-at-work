@@ -54,13 +54,13 @@ jobs:
         run: |
           echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
           new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts)
-          
+
           if [ -n "$new_post" ]; then
             echo "New post found: $new_post"
-          
+
             title=$(cat "$new_post" | sed -n -e 's/^.*title: //p' | tr -d '"')
             issue_id=$(cat "$new_post" | sed -n -e 's/^.*comment_id: //p')
-          
+
             if [ ! -n "$issue_id" ]; then
               issue_response=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
                 -H "Accept: application/vnd.github+json" \
@@ -74,10 +74,10 @@ jobs:
                     \"not-published\"
                   ]
                 }")
-            
+  
               issue_id=$(echo "$issue_response" | jq -r .number)
               echo "Created GitHub issue: $issue_id"
-          
+
               sed -i "2i comment_id: $issue_id" "$new_post"
             fi
           fi
