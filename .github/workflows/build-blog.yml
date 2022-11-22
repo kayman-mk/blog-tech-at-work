@@ -44,6 +44,21 @@ jobs:
           mkdir -p target/assets/webfonts
           unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d target/assets/webfonts
 
+      - name: Create Github issue
+        run: |
+          curl -X "POST" "https://api.github.com/repos/rickcogley/REPONAME/issues?state=all" \
+            -H "Cookie: logged_in=no" \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: text/plain; charset=utf-8" \
+            -d $'{
+              "title": "my title",
+              "body": "",
+              "labels": [
+                "blog-comment",
+                "not-released"
+              ]
+            }'
+
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         if: github.ref == 'refs/heads/main'
