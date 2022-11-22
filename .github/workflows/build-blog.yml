@@ -78,14 +78,11 @@ jobs:
               echo "Created GitHub issue: $issue_id"
           
               sed -i "2i comment_id: $issue_id" "$new_post"
-          
-              git config --global user.name "kayman-mk"
-              git config --global user.email "github-public@matthiaskay.de"
-              git add "$new_post"
-              git commit -m "Added comment_id to $new_post"
-              git push
             fi
           fi
+
+      - id: commit-changes
+        uses: stefanzweifel/git-auto-commit-action@v4
 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
