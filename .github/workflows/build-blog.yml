@@ -52,7 +52,7 @@ jobs:
       - name: Create Github issue for new posts
         run: |
           echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
-          new_post=$(echo "${{ steps.get-changed-files.outputs.added }}" | jq -r .[] | grep src/_posts)
+          new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts)
           
           if [ -n "$new_post" ]; then
             echo "New post found: $new_post"
