@@ -44,20 +44,28 @@ jobs:
           mkdir -p target/assets/webfonts
           unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d target/assets/webfonts
 
-      - name: Create Github issue
+      - name: Create Github issue for new posts
         run: |
-          curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: text/plain; charset=utf-8" \
-            -d '{
-              "title": "my title",
-              "body": "",
-              "labels": [
-                "blog-comment",
-                "not-released"
-              ]
-            }'
+          new_post=$(git diff --name-status HEAD main | grep ^A | cut -f 2)
+          
+          if [ -n "$new_post" ]; then
+            echo "New post found: $new_post"
+          
+            issue_no=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Content-Type: text/plain; charset=utf-8" \
+                -d '{
+                "title": "my title",
+                "body": "",
+                "labels": [
+                  "blog-comment",
+                  "not-released"
+                ]
+              }' | jq -r '.number')
+          
+            echo "Created GitHub issue: $issue_no"
+          fi
 
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
