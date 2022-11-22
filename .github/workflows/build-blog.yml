@@ -46,7 +46,7 @@ jobs:
 
       - name: Create Github issue for new posts
         run: |
-          git fetch origin main --depth=1 --no-tags
+          git fetch origin --depth=1 --no-tags
           new_post=$(git diff --name-status HEAD main | grep ^A | cut -f 2)
           
           if [ -n "$new_post" ]; then
