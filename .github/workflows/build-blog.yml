@@ -46,17 +46,20 @@ jobs:
 
       - name: Create Github issue for new posts
         run: |
+          git fetch origin main --depth=1 --no-tags
           new_post=$(git diff --name-status HEAD main | grep ^A | cut -f 2)
           
           if [ -n "$new_post" ]; then
             echo "New post found: $new_post"
+          
+            title=$(cat "$new_post" | sed -n -e 's/^.*title: //p')
           
             issue_no=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
               -H "Accept: application/vnd.github+json" \
               -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
               -H "Content-Type: text/plain; charset=utf-8" \
                 -d '{
-                "title": "my title",
+                "title": "$title",
                 "body": "",
                 "labels": [
                   "blog-comment",
