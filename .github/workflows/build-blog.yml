@@ -47,7 +47,6 @@ jobs:
       - name: Create Github issue for new posts
         run: |
           git fetch origin main --depth=1 --no-tags
-          git branch -a
           git diff --name-status HEAD remotes/origin/main | grep ^A | cut -f 2 | grep src/_posts
           new_post=$(git diff --name-status HEAD remotes/origin/main | grep ^A | cut -f 2 | grep src/_posts)
           
