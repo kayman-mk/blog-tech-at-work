@@ -44,10 +44,14 @@ jobs:
           mkdir -p target/assets/webfonts
           unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d target/assets/webfonts
 
+      - id: get-changed-files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: space-delimited
+
       - name: Create Github issue for new posts
         run: |
-          git fetch origin main --depth=1 --no-tags
-          git diff --name-status HEAD remotes/origin/main | grep ^A | cut -f 2 | grep src/_posts
+          echo "Changed files: ${{ steps.get-changed-files.outputs.all }}"
           new_post=$(git diff --name-status HEAD remotes/origin/main | grep ^A | cut -f 2 | grep src/_posts)
           
           if [ -n "$new_post" ]; then
