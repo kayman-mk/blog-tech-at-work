@@ -46,9 +46,9 @@ jobs:
 
       - name: Create Github issue for new posts
         run: |
-          git fetch origin --depth=1 --no-tags
+          git fetch origin main --depth=1 --no-tags
           git branch -a
-          new_post=$(git diff --name-status HEAD  remotes/origin/main | grep ^A | cut -f 2 | grep src/_posts)
+          new_post=$(git diff --name-status HEAD origin/main | grep ^A | cut -f 2 | grep src/_posts)
           
           if [ -n "$new_post" ]; then
             echo "New post found: $new_post"
