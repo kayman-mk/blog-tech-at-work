@@ -50,6 +50,7 @@ jobs:
           format: json
 
       - name: Create Github issue for new posts
+        if: github.ref != 'refs/heads/main'
         run: |
           echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
           new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts)
@@ -83,8 +84,9 @@ jobs:
 
       - id: commit-changes
         uses: stefanzweifel/git-auto-commit-action@v4
+        if: github.ref != 'refs/heads/main'
         with:
-          commit_message: "Add comment_id to new posts"
+          commit_message: "Add comment_id to new post"
           file_pattern: src/_posts
 
       - name: Deploy
