@@ -46,11 +46,11 @@ jobs:
 
       - name: Create Github issue
         run: |
-          curl -X "POST" "https://api.github.com/repos/rickcogley/REPONAME/issues?state=all" \
-            -H "Cookie: logged_in=no" \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Content-Type: text/plain; charset=utf-8" \
-            -d $'{
+            -d '{
               "title": "my title",
               "body": "",
               "labels": [
