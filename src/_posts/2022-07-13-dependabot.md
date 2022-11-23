@@ -1,4 +1,5 @@
 ---
+comment_id: 44
 date: 2022-07-13
 title: Updating dependencies with Dependabot on a regular interval
 ---
