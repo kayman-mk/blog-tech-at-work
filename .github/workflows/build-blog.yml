@@ -44,6 +44,51 @@ jobs:
           mkdir -p target/assets/webfonts
           unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d target/assets/webfonts
 
+      - id: get-changed-files
+        uses: jitterbit/get-changed-files@v1
+        with:
+          format: json
+
+      - name: Create Github issue for new posts
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
+          new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts)
+
+          if [ -n "$new_post" ]; then
+            echo "New post found: $new_post"
+
+            title=$(sed -n -e 's/^.*title: //p' "$new_post" | tr -d '"')
+            issue_id=$(sed -n -e 's/^.*comment_id: //p' "$new_post")
+
+            if [ -z "$issue_id" ]; then
+              issue_response=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
+                -H "Accept: application/vnd.github+json" \
+                -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                -H "Content-Type: text/plain; charset=utf-8" \
+                  -d "{
+                  \"title\": \"$title\",
+                  \"body\": \"\",
+                  \"labels\": [
+                    \"blog-comment\",
+                    \"not-published\"
+                  ]
+                }")
+
+              issue_id=$(echo "$issue_response" | jq -r .number)
+              echo "Created GitHub issue: $issue_id"
+
+              sed -i "2i comment_id: $issue_id" "$new_post"
+            fi
+          fi
+
+      - id: commit-changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        if: github.ref != 'refs/heads/main'
+        with:
+          commit_message: "Add comment_id to new post"
+          file_pattern: src/_posts
+
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         if: github.ref == 'refs/heads/main'
