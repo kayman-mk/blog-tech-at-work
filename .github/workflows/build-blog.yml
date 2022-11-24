@@ -90,6 +90,7 @@ jobs:
                   ]
                 }")
 
+              echo "$issue_response"
               issue_id=$(echo "$issue_response" | jq -r .number)
               echo "Created GitHub issue: $issue_id"
 
