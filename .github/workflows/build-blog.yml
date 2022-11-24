@@ -25,6 +25,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
 
+      - uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
       - name: Build blog
         run: |
           bundle config path "$(pwd)/vendor/bundle"
@@ -35,14 +42,15 @@ jobs:
           bundle exec jekyll build
 
       - name: Install Fontawesome
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19.x
         run: |
-          wget https://use.fontawesome.com/releases/v6.2.0/fontawesome-free-6.2.0-web.zip -O fontawesome.zip
-
+          npm install
+          
           mkdir -p target/assets/css
-          unzip -j fontawesome.zip fontawesome-free-6.2.0-web/css/all.min.css -d target/assets/css
-
-          mkdir -p target/assets/webfonts
-          unzip -j fontawesome.zip "fontawesome-free-6.2.0-web/webfonts/*" -d target/assets/webfonts
+          cp node_modules/@fortawesome/fontawesome-free/css/all.min.css target/assets/css/fontawesome.min.css
+          cp -pr node_modules/@fortawesome/fontawesome-free/webfonts target/assets
 
       - id: get-changed-files
         uses: jitterbit/get-changed-files@v1
