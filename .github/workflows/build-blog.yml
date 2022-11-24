@@ -74,7 +74,7 @@ jobs:
             echo "New post found: $new_post"
 
             title=$(sed -n -e 's/^.*title: //p' "$new_post" | tr -d '"')
-            issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post")
+            issue_id=$(sed -n -e 's/^.*comments_id: [[:digit:]]\+//p' "$new_post")
 
             echo "Title: $title"
             echo "Issue ID: $issue_id"
@@ -116,7 +116,7 @@ jobs:
           if [ -n "$new_post" ]; then
             echo "New post found: $new_post"
 
-            issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post")
+            issue_id=$(sed -n -e 's/^.*comments_id: [[:digit:]]\+//p' "$new_post")
 
             curl -X "PATCH" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues/$issue_id" \
               -H "Accept: application/vnd.github+json" \
