@@ -125,7 +125,6 @@ jobs:
                   \"blog-comment\",
                 ]
               }")
-            fi
           fi
 
       - name: Deploy
