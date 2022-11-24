@@ -53,11 +53,11 @@ jobs:
           cp node_modules/@fortawesome/fontawesome-free/css/all.min.css target/assets/fontawesome/css/
           cp -pr node_modules/@fortawesome/fontawesome-free/webfonts target/assets/fontawesome/
 
-          mkdir -p assets/js
-          cp node_modules/dayjs/plugin/relativeTime.js assets/js/
-          cp node_modules/dompurify/dist/purify.min.js assets/js/
-          cp node_modules/marked/marked.min.js assets/js/
-          cp node_modules/dayjs/dayjs.min.js assets/js/
+          mkdir -p target/assets/js
+          cp node_modules/dayjs/plugin/relativeTime.js target/assets/js/
+          cp node_modules/dompurify/dist/purify.min.js target/assets/js/
+          cp node_modules/marked/marked.min.js target/assets/js/
+          cp node_modules/dayjs/dayjs.min.js target/assets/js/
 
       - id: get-changed-files
         uses: jitterbit/get-changed-files@v1
