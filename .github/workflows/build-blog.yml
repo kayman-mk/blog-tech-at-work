@@ -76,6 +76,9 @@ jobs:
             title=$(sed -n -e 's/^.*title: //p' "$new_post" | tr -d '"')
             issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post")
 
+            echo "Title: $title"
+            echo "Issue ID: $issue_id"
+          
             if [ -z "$issue_id" ]; then
               issue_response=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
                 -H "Accept: application/vnd.github+json" \
@@ -90,7 +93,6 @@ jobs:
                   ]
                 }")
 
-              echo "$issue_response"
               issue_id=$(echo "$issue_response" | jq -r .number)
               echo "Created GitHub issue: $issue_id"
 
@@ -123,9 +125,11 @@ jobs:
                 -d "{
                   \"state\": \"closed\",
                   \"labels\": [
-                  \"blog-comment\",
+                  \"blog-comment\"
                 ]
               }")
+          
+              echo "$issue_response"
           fi
 
       - name: Deploy
