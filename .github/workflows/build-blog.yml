@@ -39,7 +39,7 @@ jobs:
           cd src
           bundle install
 
-          bundle exec jekyll build
+          JEKYLL_ENV=production bundle exec jekyll build
 
       - uses: actions/setup-node@v3
         with:
