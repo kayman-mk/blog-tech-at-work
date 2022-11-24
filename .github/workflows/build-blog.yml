@@ -78,7 +78,7 @@ jobs:
 
             echo "Title: $title"
             echo "Issue ID: $issue_id"
-          
+
             if [ -z "$issue_id" ]; then
               issue_response=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
                 -H "Accept: application/vnd.github+json" \
@@ -108,7 +108,7 @@ jobs:
           file_pattern: src/_posts
 
       - name: Activate GitHub issue for comments
-        if: github.ref != 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
           new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts || true)
@@ -118,7 +118,7 @@ jobs:
 
             issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post")
 
-            issue_response=$(curl -X "PATCH" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues/$issue_id" \
+            curl -X "PATCH" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues/$issue_id" \
               -H "Accept: application/vnd.github+json" \
               -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
               -H "Content-Type: text/plain; charset=utf-8" \
@@ -127,9 +127,7 @@ jobs:
                   \"labels\": [
                   \"blog-comment\"
                 ]
-              }")
-          
-              echo "$issue_response"
+              }"
           fi
 
       - name: Deploy
