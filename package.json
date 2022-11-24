@@ -1,0 +1,17 @@
+{
+  "name": "Dependency Installation",
+  "version": "1.0.0",
+  "description": "Needed to install some dependencies",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthias Kay",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "6.2.1"
+  }
+}
