@@ -49,9 +49,9 @@ jobs:
         run: |
           npm install
 
-          mkdir -p target/assets/css
-          cp node_modules/@fortawesome/fontawesome-free/css/all.min.css target/assets/css/fontawesome.min.css
-          cp -pr node_modules/@fortawesome/fontawesome-free/webfonts target/assets
+          mkdir -p target/assets/fontawesome/css
+          cp node_modules/@fortawesome/fontawesome-free/css/{all.min, brands.min, solid.min}.css target/assets/fontawesome/css/
+          cp -pr node_modules/@fortawesome/fontawesome-free/webfonts target/assets/fontawesome/
 
       - id: get-changed-files
         uses: jitterbit/get-changed-files@v1
