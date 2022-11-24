@@ -1,5 +1,5 @@
 ---
-comment_id: 48
+comments_id: 48
 date: 2022-09-07
 title: "Templates for Pull Requests"
 ---
