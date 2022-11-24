@@ -10,13 +10,19 @@ WORKDIR /opt/jekyll
 COPY src/Gemfile .
 RUN bundle install
 
-# install fontawesome
+# install fontawesome and scripts for comment system
 COPY package.json .
 RUN npm install
 
 RUN mkdir -p assets/fontawesome/css && \
     cp -pr node_modules/@fortawesome/fontawesome-free/webfonts assets/fontawesome/ && \
-    cp node_modules/@fortawesome/fontawesome-free/css/all.min.css assets/fontawesome/css/
+    cp node_modules/@fortawesome/fontawesome-free/css/all.min.css assets/fontawesome/css/ && \
+
+    mkdir -p assets/js && \
+    cp node_modules/dayjs/plugin/relativeTime.js assets/js/ && \
+    cp node_modules/dompurify/dist/purify.min.js assets/js/ && \
+    cp node_modules/marked/marked.min.js assets/js/ && \
+    cp node_modules/dayjs/dayjs.min.js assets/js/
 
 COPY docker/start_jekyll.sh .
 

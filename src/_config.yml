@@ -101,6 +101,11 @@ compress_html:
   ignore:
     envs: development
 
+# Comment system
+issues_repo: kayman-mk/blog-tech-at-work
+comments:
+  provider: "custom"
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

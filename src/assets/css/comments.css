@@ -1,0 +1,35 @@
+div.comment-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2em;
+}
+
+div.comment-actions > h2 {
+    margin: 0
+}
+
+div.comment-actions > a {
+    color: white;
+    background-color: black;
+    font-size: 1em;
+}
+div.commenter {
+    font-size: 0.7em;
+}
+
+div.commenter img.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+ol.comments-list {
+    padding-left: 0;
+}
+
+ol.comments-list li {
+    list-style-type: none;
+}

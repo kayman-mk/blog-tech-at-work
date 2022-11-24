@@ -2,4 +2,4 @@
 set -euo pipefail
 
 cp -dpr /mnt/src/* .
-jekyll serve -H 0.0.0.0
+JEKYLL_ENV=production jekyll serve -H 0.0.0.0
