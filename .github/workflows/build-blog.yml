@@ -68,7 +68,7 @@ jobs:
             echo "New post found: $new_post"
 
             title=$(sed -n -e 's/^.*title: //p' "$new_post" | tr -d '"')
-            issue_id=$(sed -n -e 's/^.*comment_id: //p' "$new_post")
+            issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post")
 
             if [ -z "$issue_id" ]; then
               issue_response=$(curl -X "POST" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues" \
@@ -87,7 +87,7 @@ jobs:
               issue_id=$(echo "$issue_response" | jq -r .number)
               echo "Created GitHub issue: $issue_id"
 
-              sed -i "2i comment_id: $issue_id" "$new_post"
+              sed -i "2i comments_id: $issue_id" "$new_post"
             fi
           fi
 
@@ -95,7 +95,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         if: github.ref != 'refs/heads/main'
         with:
-          commit_message: "Add comment_id to new post"
+          commit_message: "Add comments_id to new post"
           file_pattern: src/_posts
 
       - name: Deploy
