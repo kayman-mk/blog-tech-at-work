@@ -14,9 +14,8 @@ RUN bundle install
 COPY package.json .
 RUN npm install
 
-RUN mkdir -p assets/fontawesome/css
-
-RUN cp -pr node_modules/@fortawesome/fontawesome-free/webfonts assets/fontawesome/ && \
+RUN mkdir -p assets/fontawesome/css && \
+    cp -pr node_modules/@fortawesome/fontawesome-free/webfonts assets/fontawesome/ && \
     cp node_modules/@fortawesome/fontawesome-free/css/all.min.css assets/fontawesome/css/
 
 COPY docker/start_jekyll.sh .
