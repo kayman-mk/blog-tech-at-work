@@ -1,3 +1,20 @@
+div.comment-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2em;
+}
+
+div.comment-actions > h2 {
+    margin: 0
+}
+
+div.comment-actions > a {
+    color: white;
+    background-color: black;
+    font-size: 1em;
+}
 div.commenter {
     font-size: 0.7em;
 }

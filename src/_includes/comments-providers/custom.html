@@ -4,7 +4,7 @@
 <section id="comments">
     <div class="comment-actions">
         <h2>Comments <span id="comments-count"></span></h2>
-        <a class="btn" href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"><i class="fa-brands fa-github"></i> Post comment</a>
+        <a class="btn" href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"><i class="fa-brands fa-github"></i> Post comment <i class="fa-solid fa-up-right-from-square fa-2xs"></i></a>
     </div>
     <div id="comments-wrapper">
         Loading...
@@ -90,7 +90,6 @@
                 const datePosted = dayjs(comment.created_at).fromNow();
                 const user = comment.user;
                 const body = DOMPurify.sanitize(marked.parse(comment.body));
-                const postedByAuthor = comment.author_association === 'OWNER';
                 const edited = comment.created_at !== comment.updated_at;
 
                 return `<div class="comment">
