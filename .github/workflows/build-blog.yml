@@ -41,13 +41,14 @@ jobs:
 
           bundle exec jekyll build
 
-      - name: Install Fontawesome
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 19.x
+
+      - name: Install Fontawesome
         run: |
           npm install
-          
+
           mkdir -p target/assets/css
           cp node_modules/@fortawesome/fontawesome-free/css/all.min.css target/assets/css/fontawesome.min.css
           cp -pr node_modules/@fortawesome/fontawesome-free/webfonts target/assets
