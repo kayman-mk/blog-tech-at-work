@@ -86,7 +86,7 @@ jobs:
                 -H "Content-Type: text/plain; charset=utf-8" \
                   -d "{
                   \"title\": \"$title\",
-                  \"body\": \"\",
+                  \"body\": \"The comments added to this issue are shown in the blog automatically.\",
                   \"labels\": [
                     \"blog-comment\",
                     \"not-published\"
