@@ -1,14 +1,10 @@
 {% assign issues_repo = site.issues_repo %}
-{% assign issue_id = include.issue_id %}
+{% assign issue_id = page.comments_id %}
 
 <section id="comments">
     <div class="comment-actions">
         <h2>Comments <span id="comments-count"></span></h2>
-        <a
-                class="button"
-                href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"
-        >Post comment</a
-        >
+        <a class="btn" href="https://github.com/{{ issues_repo }}/issues/{{ issue_id }}"><i class="fa-brands fa-github"></i> Post comment</a>
     </div>
     <div id="comments-wrapper">
         Loading...
@@ -24,11 +20,13 @@
     const commentsObserver = new IntersectionObserver((entries, self) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                fetchComments(); // this is the important part
+                fetchComments();
                 self.unobserve(entry.target);
             }
-        });
-    }, { rootMargin: '200px 0px 0px 0px' });
+        })
+    }, {
+        rootMargin: '200px 0px 0px 0px'
+    });
 
     commentsObserver.observe(commentsSection);
 
@@ -56,10 +54,10 @@
     }
 
     const commentScripts = [
-        'https://unpkg.com/marked@0.3.6/marked.min.js',
-        'https://unpkg.com/dompurify@1.0.8/dist/purify.min.js',
-        'https://unpkg.com/dayjs@1.8.21/dayjs.min.js',
-        'https://unpkg.com/dayjs@1.7.8/plugin/relativeTime.js',
+        '/assets/js/marked.min.js',
+        '/assets/js/purify.min.js',
+        '/assets/js/dayjs.min.js',
+        '/assets/js/relativeTime.js',
     ];
 
     // Reminder: this gets called when the viewport intersects with the comments section
@@ -72,10 +70,6 @@
         // Load all comment script dependencies async
         await Promise.all(commentScripts.map((script) => loadScript(script)));
         renderComments(comments);
-    }
-
-    const renderComments = (comments) => {
-        // Do rendering later
     }
 
     const renderComments = (comments) => {
@@ -95,24 +89,20 @@
             .map(comment => {
                 const datePosted = dayjs(comment.created_at).fromNow();
                 const user = comment.user;
-                const body = DOMPurify.sanitize(marked(comment.body));
+                const body = DOMPurify.sanitize(marked.parse(comment.body));
                 const postedByAuthor = comment.author_association === 'OWNER';
                 const edited = comment.created_at !== comment.updated_at;
 
-                return `<li class="comment">
+                return `<div class="comment">
                 <div class="commenter">
                     <img src="${user.avatar_url}" alt="" aria-hidden="true" class="meta avatar" />
-                    <a
-                        href="https://github.com/${user.login}"
-                        class="meta username"
-                        >${user.login}</a
-                    >
-                    <div class="meta date-posted">commented <time datetime="${comment.created_at}">${datePosted}</time></div>
-                    ${postedByAuthor ? '<span class="meta tag author-badge">Author</span>' : ''}
-                    ${edited ? `<span class="meta comment-edited">Edited</span>` : ''}
+
+                    <a href="https://github.com/${user.login}" class="meta username">${user.login}</a>
+                    commented <time datetime="${comment.created_at}" title="${comment.created_at}">${datePosted}</time>
+                    ${edited ? `<span class="meta comment-edited">(edited)</span>` : ''}
                 </div>
                 <div class="comment-body">${body}</div>
-            </li>`;
+            </div>`;
             })
             .join('');
 
