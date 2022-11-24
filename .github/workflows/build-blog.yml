@@ -104,6 +104,30 @@ jobs:
           commit_message: "Add comments_id to new post"
           file_pattern: src/_posts
 
+      - name: Activate GitHub issue for comments
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
+          new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts || true)
+
+          if [ -n "$new_post" ]; then
+            echo "New post found: $new_post"
+
+            issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post")
+
+            issue_response=$(curl -X "PATCH" "https://api.github.com/repos/kayman-mk/blog-tech-at-work/issues/$issue_id" \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Content-Type: text/plain; charset=utf-8" \
+                -d "{
+                  \"state\": \"closed\",
+                  \"labels\": [
+                  \"blog-comment\",
+                ]
+              }")
+            fi
+          fi
+
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         if: github.ref == 'refs/heads/main'
