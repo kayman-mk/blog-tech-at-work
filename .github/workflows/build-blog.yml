@@ -133,7 +133,8 @@ jobs:
       - name: Replace secrets
         if: github.ref != 'refs/heads/main'
         run: |
-          sed -i "s/__GH_API_TOKEN_COMMENT_SYSTEM__REPLACE_ME__/${{ secrets.GH_API_TOKEN_COMMENT_SYSTEM }}/g" target/scripts/github.php
+          find . -type f -print0 | \
+          xargs -0 sed -i "s/__GH_API_TOKEN_COMMENT_SYSTEM__REPLACE_ME__/${{ secrets.GH_API_TOKEN_COMMENT_SYSTEM }}/g"
 
       - name: Deploy
         if: github.ref != 'refs/heads/main'
