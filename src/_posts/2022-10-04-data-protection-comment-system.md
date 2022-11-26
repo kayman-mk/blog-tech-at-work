@@ -3,10 +3,10 @@ date: 2022-10-04
 title: "Protect sensitive data from being exposed to GitHub"
 ---
 
-As described in my [previous post](comment-system-in-static-blog.md) I added comments to my posts using GitHub issues.
+As described in my [previous post](comment-system-in-static-blog/) I added comments to my posts using GitHub issues.
 I also mentioned that several other tools are not compliant to the GDPR. But why should GitHub be compliant?
 
-Whenever the comments were loaded it was done with a call to https://api.github.com/... So the visitor's IP address
+Whenever the comments were loaded it was done with a call to [GitHub API](https://api.github.com/) So the visitor's IP address
 was leaked to GitHub. I thought about several solutions to fix this issue. The best I came up with was to implement
 a little proxy script which runs on my server and simply forwards the requests to GitHub. This way GitHub sees my server
 IP only and not the one from the visitor. Much better!
@@ -71,5 +71,5 @@ if ($action > "") {
 }
 ```
 
-`curl` was the easiest way to implement the script. The personal access token is injected in the script at build time and
+`curl` was the easiest way to implement the script. The personal access token is injected in the script at build time, and
 it is not committed to the repository.
