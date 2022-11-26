@@ -34,7 +34,7 @@
     const fetchComments = async () => {
         try {
             const comments = await (await fetch(
-                '{{ base_url }}/scripts/github.php?action=fetch_comments&repo={{ issues_repo }}&issue_id{{ issue_id }}'
+                '{{ base_url }}/scripts/github.php?action=fetch_comments&repo={{ issues_repo }}&issue_id={{ issue_id }}'
             )).json();
             initRenderComments(comments);
         } catch (e) {
