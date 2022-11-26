@@ -1,0 +1,13 @@
+{
+  "name": "dummy/phpstan",
+  "description": "just a dummy package to be able to run PHPStan",
+
+  "require-dev": {
+    "phpstan/phpstan": "1.9.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src"
+    }
+  }
+}
