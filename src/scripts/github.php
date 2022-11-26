@@ -2,7 +2,7 @@
 $ch = curl_init();
 
 $headers = [
-    'Authorization: token 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',
+    'Authorization: token __GH_API_TOKEN_COMMENT_SYSTEM__REPLACE_ME__',
     'Accept-Encoding: gzip, deflate',
     'Cache-Control: no-cache',
     'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0'
