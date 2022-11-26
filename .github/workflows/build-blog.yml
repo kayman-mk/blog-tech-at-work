@@ -131,13 +131,13 @@ jobs:
           fi
 
       - name: Replace secrets
-        if: github.ref != 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         run: |
           find . -type f -print0 | \
           xargs -0 sed -i "s/__GH_API_TOKEN_COMMENT_SYSTEM__REPLACE_ME__/${{ secrets.GH_API_TOKEN_COMMENT_SYSTEM }}/g"
 
       - name: Deploy
-        if: github.ref != 'refs/heads/main'
+        if: github.ref == 'refs/heads/main'
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: af93d.netcup.net
