@@ -3,8 +3,7 @@
   "description": "just a dummy package to be able to run PHPStan",
 
   "require-dev": {
-    "ext-curl": "*",
-    "phpstan/phpstan": "1.*"
+    "phpstan/phpstan": "1.9.2"
   },
   "autoload": {
     "psr-4": {
