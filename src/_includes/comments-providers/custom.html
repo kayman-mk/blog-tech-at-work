@@ -33,7 +33,7 @@
     const fetchComments = async () => {
         try {
             const comments = await (await fetch(
-                'https://api.github.com/repos/{{ issues_repo }}/issues/{{ issue_id }}/comments'
+                'https://blog.matthiaskay.de/scripts/github.php?action=fetch_comments&repo={{ issues_repo }}&issue_id{{ issue_id }}'
             )).json();
             initRenderComments(comments);
         } catch (e) {
@@ -94,7 +94,7 @@
 
                 return `<div class="comment">
                 <div class="commenter">
-                    <img src="${user.avatar_url}" alt="" aria-hidden="true" class="meta avatar" />
+                    <img src="https://blog.matthiaskay.de/scripts/github.php?action=get_avatar&username=${user.login}" alt="" aria-hidden="true" class="meta avatar" />
 
                     <a href="https://github.com/${user.login}" class="meta username">${user.login}</a>
                     commented <time datetime="${comment.created_at}" title="${comment.created_at}">${datePosted}</time>

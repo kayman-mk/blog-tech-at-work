@@ -6,6 +6,7 @@ This repository contains the content of my blog Tech@Work.
 
 - Linting:
   - YAML
+  - PHP
   - Markdown files
   - Dockerfiles
   - the title of pull requests
