@@ -12,12 +12,16 @@ $url = "";
 $action = curl_escape($ch, $_REQUEST['action']);
 
 if ($action == "fetch_comments") {
-    $repository = str_replace('%2F', '/', curl_escape($ch, $_REQUEST['repo']));
-    $issue_id = curl_escape($ch, $_REQUEST['issue_id']);
+    $repository_name = curl_escape($ch, $_REQUEST['repo']);
 
-    $url = "https://api.github.com/repos/$repository/issues/$issue_id/comments";
+    if ($repository_name !== false) {
+        $repository = str_replace('%2F', '/', $repository_name);
+        $issue_id = curl_escape($ch, $_REQUEST['issue_id']);
 
-    $headers[] = 'Accept: text/json';
+        $url = "https://api.github.com/repos/$repository/issues/$issue_id/comments";
+
+        $headers[] = 'Accept: text/json';
+    }
 } else if ($action == "get_avatar") {
     $username = curl_escape($ch, $_REQUEST['username']);
 
