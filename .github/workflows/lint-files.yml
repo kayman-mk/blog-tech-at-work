@@ -48,7 +48,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: php-actions/composer@v6 # or alternative dependency management
+
+      - uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - uses: php-actions/composer@v6
+
       - uses: php-actions/phpstan@v3
         with:
           path: src/
