@@ -2,6 +2,7 @@
 comments_id: 43
 date: 2022-07-01
 title: Why this blog?
+tags: personal
 ---
 During my holidays I read several blogs and listen to some podcasts about DevOps, agility, and cloud topics in general.
 Some of them are working others don't, especially in an enterprise environment I am working in. On the other hand, there

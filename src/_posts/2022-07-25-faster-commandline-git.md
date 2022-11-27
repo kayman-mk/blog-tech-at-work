@@ -2,6 +2,7 @@
 comments_id: 45
 date: 2022-07-25
 title: Be faster on the command line with Git
+tags: git, alias, shell
 ---
 I am using the command line day by day for my Git tasks: cloning repositories, creating new branches, committing changes.
 One paint point always was the time it took me to type in the commands, especially for Git. So I sat down and thought

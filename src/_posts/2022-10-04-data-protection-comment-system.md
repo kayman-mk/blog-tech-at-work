@@ -2,6 +2,7 @@
 comments_id: 69
 date: 2022-10-04
 title: "Protect sensitive data from being exposed to GitHub"
+tags: php proxy data-protection comment-system
 ---
 
 As described in my [previous post](comment-system-in-static-blog/) I added comments to my posts using GitHub issues.

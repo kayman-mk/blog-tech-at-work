@@ -2,6 +2,7 @@
 comments_id: 46
 date: 2022-08-12
 title: Be faster on the command line with GLab CLI
+tags: glab alias shell
 ---
 We are using a self hosted GitLab solution to host all our repositories. For me it was always a pain to create merge
 requests and push changes to the remote repository (already tackled in [Be faster on the command line with Git](faster-commandline-git.html)).
