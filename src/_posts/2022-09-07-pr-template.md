@@ -2,6 +2,7 @@
 comments_id: 48
 date: 2022-09-07
 title: "Templates for Pull Requests"
+tags: workflow template pull-request 
 ---
 Have you ever seen Pull Requests like "fixing yesterdays bug" or similar? That's horrible especially if you think
 about your commit history.

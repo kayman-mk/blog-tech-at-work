@@ -2,6 +2,7 @@
 comments_id: 65
 date: 2022-09-19
 title: "Implementing a comment System in a static blog"
+tags: blog comment-system javascript github-issues workflow
 ---
 This blog is powered by [Jekyll](https://jekyllrb.com/). As it is a static site generator, there are no databases,
 server side scripts or anything else. Just some HTML, CSS and JavaScript files. The question now is: How to implement
