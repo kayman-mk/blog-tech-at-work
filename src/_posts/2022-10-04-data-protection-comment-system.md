@@ -5,7 +5,7 @@ title: "Protect sensitive data from being exposed to GitHub"
 tags: php proxy data-protection comment-system
 ---
 
-As described in my [previous post](comment-system-in-static-blog/) I added comments to my posts using GitHub issues.
+As described in my [previous post](/2022/09/19/comment-system-in-static-blog/) I added comments to my posts using GitHub issues.
 I also mentioned that several other tools are not compliant to the GDPR. But why should GitHub be compliant?
 
 Whenever the comments were loaded it was done with a call to [GitHub API](https://api.github.com/) So the visitor's IP address
