@@ -1,3 +1,9 @@
+<!-- Show badges at top. No headline. -->
+<!-- markdownlint-disable-next-line MD041 -->
+![Code Size](https://img.shields.io/github/languages/code-size/kayman-mk/blog-tech-at-work)
+![Release](https://img.shields.io/github/v/release/kayman-mk/blog-tech-at-work?sort=semver)
+![Status](https://github.com/kayman-mk/blog-tech-at-work/actions/workflows/build-blog.yml/badge.svg)
+
 # Tech@Work
 
 This repository contains the content of my blog Tech@Work.
