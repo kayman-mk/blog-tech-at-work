@@ -41,10 +41,10 @@ jobs:
 
           # remove the CDN dependency
           LAYOUT_DIR=$(bundle show minimal-mistakes)
-          
-          cp $LAYOUT_DIR/_includes/head.html $LAYOUT_DIR/_includes/head.html.old
-          sed '/fontawesome/d' $LAYOUT_DIR/_includes/head.html.old > $LAYOUT_DIR/_includes/head.html
-          
+
+          cp "$LAYOUT_DIR/_includes/head.html" "$LAYOUT_DIR/_includes/head.html.old"
+          sed '/fontawesome/d' "$LAYOUT_DIR/_includes/head.html.old" > "$LAYOUT_DIR/_includes/head.html"
+
           JEKYLL_ENV=production bundle exec jekyll build
 
       - uses: actions/setup-node@v3
