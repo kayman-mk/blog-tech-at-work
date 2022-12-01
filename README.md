@@ -1,3 +1,5 @@
+![Status](https://github.com/kayman-mk/blog-tech-at-work/actions/workflows/build-blog.yml/badge.svg)
+
 # Tech@Work
 
 This repository contains the content of my blog Tech@Work.
