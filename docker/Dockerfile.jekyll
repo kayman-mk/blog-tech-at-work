@@ -14,6 +14,11 @@ RUN bundle install
 COPY package.json .
 RUN npm install
 
+# remove the Fontawesome references to the CDN
+RUN LAYOUT_DIR=$(bundle show minimal-mistakes) && \
+    cp $LAYOUT_DIR/_includes/head.html $LAYOUT_DIR/_includes/head.html.old && \
+    cat $LAYOUT_DIR/_includes/head.html.old | sed '/fontawesome/d' > $LAYOUT_DIR/_includes/head.html
+
 RUN mkdir -p assets/fontawesome/css && \
     cp -pr node_modules/@fortawesome/fontawesome-free/webfonts assets/fontawesome/ && \
     cp node_modules/@fortawesome/fontawesome-free/css/all.min.css assets/fontawesome/css/ && \
