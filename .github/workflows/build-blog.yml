@@ -69,7 +69,7 @@ jobs:
             echo "New post found: $new_post"
 
             title=$(sed -n -e 's/^.*title: //p' "$new_post" | tr -d '"')
-            issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post" | grep -Eo '[0-9]+')
+            issue_id=$(sed -n -e 's/^.*comments_id: //p' "$new_post" | grep -Eo '[0-9]+' || true)
 
             echo "Title: $title"
             echo "Issue ID: $issue_id"
