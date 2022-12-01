@@ -1,4 +1,5 @@
 ---
+comments_id: 78
 date: 2022-10-20
 title: "Unit tests for classes using Environment Variables"
 tags: java, junit, environment-variables, test, system-stubs
