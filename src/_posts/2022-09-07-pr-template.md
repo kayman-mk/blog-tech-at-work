@@ -2,12 +2,13 @@
 comments_id: 48
 date: 2022-09-07
 title: "Templates for Pull Requests"
+tags: workflow template pull-request 
 ---
 Have you ever seen Pull Requests like "fixing yesterdays bug" or similar? That's horrible especially if you think
 about your commit history.
 
 Unfortunately you can't validate the description of a Pull Request automatically (the title can be validated to some extent.
-See [Linting Pull Requests](lint-pr.html) for more details). But you can give your users at least some guidance what you
+See [Linting Pull Requests](/2022/07/24/lint-pr/) for more details). But you can give your users at least some guidance what you
 expect from them. This is especially useful for open source development on GitHub but also a good idea for your internal
 teams to boost the quality of your Pull Requests.
 
