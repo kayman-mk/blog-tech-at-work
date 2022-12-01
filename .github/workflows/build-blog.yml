@@ -27,7 +27,7 @@ jobs:
       - name: Build blog
         run: |
           cd src/
-          
+
           JEKYLL_ENV=production bundle exec jekyll build
 
       - uses: actions/setup-node@v3
