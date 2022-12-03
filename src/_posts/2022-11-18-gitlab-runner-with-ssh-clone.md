@@ -6,7 +6,7 @@ tags: GitLab, gitlab-runner, ssh
 ---
 
 Our GitLab instance is hosted by a third party. Cloning via HTTPS is very unstable or not working at all. Nobody found out
-what the problem is. But our team uses [GitLab Runner](https://https://gitlab.com/gitlab-org/gitlab-runner/) to operate 
+what the problem is. But our team uses [GitLab Runner](https://https://gitlab.com/gitlab-org/gitlab-runner/) to operate
 he pipelines. Now, we have a problem: the GitLab Runner does not support cloning repositories via SSH. In July 2022 I
 decided to create a [merge request](https://gitlab.com/gitlab-org/gitlab-runner/-/merge_requests/3518) and add this feature.
 
