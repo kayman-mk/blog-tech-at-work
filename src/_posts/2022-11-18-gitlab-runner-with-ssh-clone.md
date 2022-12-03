@@ -4,14 +4,15 @@ title: Extend the GitLab Runner with SSH clone
 tags: GitLab, gitlab-runner, ssh
 ---
 
-Our GitLab instance is hosted by a third party. Cloning via HTTPS is very unstable or not working at all. Nobody found out what the problem is.
-But our team uses [GitLab Runner](https://https://gitlab.com/gitlab-org/gitlab-runner/) to operate the pipelines. Now, we
-have a problem: the GitLab Runner does not support cloning repositories via SSH. In July 2022 I decided to create
-a [merge request](https://gitlab.com/gitlab-org/gitlab-runner/-/merge_requests/3518) and add this feature.
+Our GitLab instance is hosted by a third party. Cloning via HTTPS is very unstable or not working at all. Nobody found out
+what the problem is. But our team uses [GitLab Runner](https://https://gitlab.com/gitlab-org/gitlab-runner/) to operate 
+he pipelines. Now, we have a problem: the GitLab Runner does not support cloning repositories via SSH. In July 2022 I
+decided to create a [merge request](https://gitlab.com/gitlab-org/gitlab-runner/-/merge_requests/3518) and add this feature.
 
 5 months later, the feature is still not available. But I found a reviewer who is dealing with it. Hooray!
 
 ## Configuration
+
 Cloning via SSH might be as easy as cloning via HTTPS. Add the following to your `config.toml` and you are done:
 
 ```toml
