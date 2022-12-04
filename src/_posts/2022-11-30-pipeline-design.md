@@ -1,4 +1,5 @@
 ---
+comments_id: 86
 date: 2022-11-30
 title: Pipeline design for CI/CD
 tags: ci, cd, GitLab, pipeline
