@@ -29,7 +29,7 @@ This is quite easy and can be achieved with a single line of code: `docker run -
 Yes you can, but you shouldn't. The rules exist for a reason so don't ignore them. In very special cases you
 can annotate the line before the violation.
 
-```
+```Dockerfile
 # hadolint ignore=DL3009`
 RUN apt-get update && apt-get install -y curl
 ```
