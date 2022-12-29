@@ -25,7 +25,7 @@ The script has to handle two main tasks:
 $ch = curl_init();
 
 $headers = [
-    'Authorization: token __GH_API_TOKEN_COMMENT_SYSTEM__REPLACE_ME__',
+    'Authorization: token <TOKEN__REDACTED>',
     'Accept-Encoding: gzip, deflate',
     'Cache-Control: no-cache',
     'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:28.0) Gecko/20100101 Firefox/28.0'
