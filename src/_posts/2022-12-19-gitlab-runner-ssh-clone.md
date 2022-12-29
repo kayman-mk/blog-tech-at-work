@@ -9,4 +9,5 @@ the feature into the official release.
 Now it's time to archive my Gitlab Runner fork. There is no need to maintain it and host a patched version of the
 Gitlab Runner.
 
+<!-- markdownlint-disable MD033 -->
 Hooray! <i class="fa-solid fa-rocket"></i>
