@@ -1,7 +1,7 @@
 ---
 comments_id: 95
 date: 2022-12-19
-title: "Gitlab Runner SSH Clone"
+title: "Gitlab Runner SSH Clone Released"
 ---
 Almost a month ago I wrote about [Adding SSH Clone to Gitlab Runner](https://blog.matthiaskay.de/2022/11/18/gitlab-runner-with-ssh-clone/).
 Today I saw that version 15.7 of Gitlab Runner was released and contains this feature. It took me 5 months to get
