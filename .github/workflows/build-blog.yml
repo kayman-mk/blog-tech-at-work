@@ -2,10 +2,15 @@
 name: "Build the blog"
 
 on: # yamllint disable-line rule:truthy
+  # feature branches
   pull_request:
+  # releases
   push:
     branches:
       - main
+  # nightly build to automatically activate new blog posts. Slightly after midnight CET/CEST as it is UTC here.
+  schedule:
+    - cron: "22 2 * * *"
 
 jobs:
   build-the-blog:
