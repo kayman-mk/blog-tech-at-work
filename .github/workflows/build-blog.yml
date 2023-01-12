@@ -60,12 +60,13 @@ jobs:
           cp node_modules/dayjs/dayjs.min.js target/assets/js/
 
       - id: get-changed-files
+        if: github.event_name != 'schedule'
         uses: jitterbit/get-changed-files@v1
         with:
           format: json
 
       - name: Create Github issue for new posts
-        if: github.ref != 'refs/heads/main'
+        if: github.ref != 'refs/heads/main' && github.event_name != 'schedule'
         run: |
           echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
           new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts || true)
@@ -102,7 +103,7 @@ jobs:
 
       - id: commit-changes
         uses: stefanzweifel/git-auto-commit-action@v4
-        if: github.ref != 'refs/heads/main'
+        if: github.ref != 'refs/heads/main' && github.event_name != 'schedule'
         with:
           commit_message: "Add comments_id to new post"
           file_pattern: src/_posts
