@@ -109,7 +109,7 @@ jobs:
           file_pattern: src/_posts
 
       - name: Activate GitHub issue for comments
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && github.event_name != 'schedule'
         run: |
           echo "Changed files: ${{ steps.get-changed-files.outputs.added }}"
           new_post=$(echo '${{ steps.get-changed-files.outputs.added }}' | jq -r .[] | grep src/_posts || true)
