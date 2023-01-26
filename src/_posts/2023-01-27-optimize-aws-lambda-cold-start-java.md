@@ -1,4 +1,5 @@
 ---
+comments_id: 108
 title: "Optimize AWS Lambda cold start (Java)"
 date: 2023-01-27
 tags: java lambda cold aws
