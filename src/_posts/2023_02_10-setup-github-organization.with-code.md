@@ -1,4 +1,5 @@
 ---
+comments_id: 112
 title: "Manage your GitHub organization with Terraform"
 date: 2023-02-10
 tags: Terraform GitHub code
