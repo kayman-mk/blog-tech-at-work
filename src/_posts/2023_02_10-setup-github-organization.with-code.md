@@ -9,7 +9,7 @@ day? Having users who are creative in setting up their repositories? Checkout th
 [integrations/github](https://registry.terraform.io/providers/integrations/github/latest/docs/resources/membership) Terraform
 provider.
 
-# Setup GitHub Organization In Terraform
+## Setup GitHub Organization In Terraform
 
 Put the following code into your Terraform project and tell your users to create PRs to create new repositories, add
 users to the organization, ... There are many resources available to setup everything in GitHub.
