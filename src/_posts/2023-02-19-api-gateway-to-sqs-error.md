@@ -12,7 +12,6 @@ than 256k data, what I didn't know at that time.
 
 I used the following template to convert the data from GitLab webhooks into a SQS message:
 
-<!-- markdownlint-disable MD033 -->
 ```hcl
 resource "aws_api_gateway_integration" "gitlab_webhook_as_sqs" {
   rest_api_id             = aws_api_gateway_rest_api.gitlab_webhook.id
@@ -51,14 +50,15 @@ resource "aws_api_gateway_integration" "gitlab_webhook_as_sqs" {
 EOF  }
 }
 ```
-<!-- markdownlint-enable MD033 -->
 
 Simple and straight forward and working for most cases. But sometimes I saw a 500 error in GitLab and had no idea,
 why. Checking the logs didn't give me a clue
 
+<!-- markdownlint-disable MD033 -->
 ```text
 Execution failed due to configuration error: No match for output mapping and no default output mapping configured. Endpoint Response Status Code: 403
 ```
+<!-- markdownlint-enable MD033 -->
 
 403 indicates an authentication error with SQS. But as I see 200 status codes and many messages in my queue, that's
 definitely not the case here.
