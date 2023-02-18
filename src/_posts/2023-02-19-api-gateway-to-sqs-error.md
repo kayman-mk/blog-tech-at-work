@@ -54,11 +54,11 @@ EOF  }
 Simple and straight forward and working for most cases. But sometimes I saw a 500 error in GitLab and had no idea,
 why. Checking the logs didn't give me a clue
 
-<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD013 -->
 ```text
 Execution failed due to configuration error: No match for output mapping and no default output mapping configured. Endpoint Response Status Code: 403
 ```
-<!-- markdownlint-enable MD033 -->
+<!-- markdownlint-enable MD013 -->
 
 403 indicates an authentication error with SQS. But as I see 200 status codes and many messages in my queue, that's
 definitely not the case here.
