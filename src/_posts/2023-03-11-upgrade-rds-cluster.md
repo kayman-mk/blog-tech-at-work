@@ -5,7 +5,7 @@ tags: AWS RDS database cluster
 ---
 We did it yesterday after discovering that the read performance was bad. The cluster consists of 2 reader and 1
 writer instance. The readers were swapping all the time due to lack of memory. So we decided to upgrade to a better
-instance type. 
+instance type.
 
 ![Database Cluster Overview](/assets/posts/20230311_RDS_Management_Console.png)
 
