@@ -102,7 +102,7 @@ jobs:
           fi
 
       - id: commit-changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         if: github.ref != 'refs/heads/main' && github.event_name != 'schedule'
         with:
           commit_message: "Add comments_id to new post"
