@@ -22,7 +22,7 @@ end
 # and associated library.
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", "= 2.0.6"
-  gem "tzinfo-data", "= 1.2023.3"
+  gem "tzinfo-data", "= 1.2024.1"
 end
 
 # Performance-booster for watching directories on Windows
