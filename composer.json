@@ -3,7 +3,7 @@
   "description": "just a dummy package to be able to run PHPStan",
 
   "require-dev": {
-    "phpstan/phpstan": "1.11.0"
+    "phpstan/phpstan": "1.11.1"
   },
   "autoload": {
     "psr-4": {
